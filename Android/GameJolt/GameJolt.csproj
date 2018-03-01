@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{899F14E2-9EFF-48FF-BF01-07D94C938319}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameJolt</RootNamespace>
+    <AssemblyName>GameJolt</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PLATFORM_ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;PLATFORM_ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Windows\GameJoltServices\AddTrophyResult.cs">
+      <Link>AddTrophyResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Async\AsyncHelper.cs">
+      <Link>AsyncHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Async\AsyncRequestBase.cs">
+      <Link>AsyncRequestBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Async\AsyncResult.cs">
+      <Link>AsyncResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Async\AsyncResultNoResult.cs">
+      <Link>AsyncResultNoResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\DataStore.cs">
+      <Link>DataStore.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\DataStoreOperation.cs">
+      <Link>DataStoreOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\DataStoreType.cs">
+      <Link>DataStoreType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Helper.cs">
+      <Link>Helper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\HighScoreTable.cs">
+      <Link>HighScoreTable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\LoggedInUser.cs">
+      <Link>LoggedInUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Logging.cs">
+      <Link>Logging.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\DataStoreRequestFactory.cs">
+      <Link>DataStoreRequestFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\DumpRequest.cs">
+      <Link>DumpRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\GenericRequestBase.cs">
+      <Link>GenericRequestBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\IJsonResult.cs">
+      <Link>IJsonResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\ImageRequest.cs">
+      <Link>ImageRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\JsonRequest.cs">
+      <Link>JsonRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\RequestParameter.cs">
+      <Link>RequestParameter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\RequestParameterCollection.cs">
+      <Link>RequestParameterCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\ScoreRequestFactory.cs">
+      <Link>ScoreRequestFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\SessionRequestFactory.cs">
+      <Link>SessionRequestFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\StringRequest.cs">
+      <Link>StringRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\TrophyRequestFactory.cs">
+      <Link>TrophyRequestFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\UserRequestFactory.cs">
+      <Link>UserRequestFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Requests\WebRequestBase.cs">
+      <Link>WebRequestBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Score.cs">
+      <Link>Score.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Session.cs">
+      <Link>Session.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\SessionStatus.cs">
+      <Link>SessionStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Trophy.cs">
+      <Link>Trophy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\TrophyFilter.cs">
+      <Link>TrophyFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\User.cs">
+      <Link>User.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\UserIndex.cs">
+      <Link>UserIndex.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>C:\BuildIncrementer.exe "$(ProjectDir)Properties\AssemblyInfo.cs" "$(ConfigurationName)"
+copy "$(TargetPath)" "C:\Users\Public\Documents\Visual Studio 2010\Assemblies\Android\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

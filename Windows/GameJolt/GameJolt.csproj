@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F8F961D-74AE-4565-A76B-AE14F470BD6D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameJolt</RootNamespace>
+    <AssemblyName>GameJolt</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>build\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PLATFORM_PC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>build\Release\</OutputPath>
+    <DefineConstants>TRACE;PLATFORM_PC</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Async\AsyncHelper.cs" />
+    <Compile Include="Async\AsyncResult.cs" />
+    <Compile Include="Async\AsyncResultNoResult.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="DataStore.cs" />
+    <Compile Include="HighScoreTable.cs" />
+    <Compile Include="Async\AsyncRequestBase.cs" />
+    <Compile Include="Requests\DataStoreRequestFactory.cs" />
+    <Compile Include="DataStoreOperation.cs" />
+    <Compile Include="DataStoreType.cs" />
+    <Compile Include="Requests\DumpRequest.cs" />
+    <Compile Include="Requests\GenericRequestBase.cs" />
+    <Compile Include="Requests\IJsonResult.cs" />
+    <Compile Include="Requests\JsonRequest.cs" />
+    <Compile Include="RequestHelper.cs" />
+    <Compile Include="Logging.cs" />
+    <Compile Include="Requests\WebRequestBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\RequestParameter.cs" />
+    <Compile Include="Requests\RequestParameterCollection.cs" />
+    <Compile Include="Requests\ImageRequest.cs" />
+    <Compile Include="Requests\ScoreRequestFactory.cs" />
+    <Compile Include="Requests\SessionRequestFactory.cs" />
+    <Compile Include="Score.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="SessionStatus.cs" />
+    <Compile Include="Requests\StringRequest.cs" />
+    <Compile Include="Trophy.cs" />
+    <Compile Include="TrophyFilter.cs" />
+    <Compile Include="Requests\TrophyRequestFactory.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Requests\UserRequestFactory.cs" />
+    <Compile Include="UserCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

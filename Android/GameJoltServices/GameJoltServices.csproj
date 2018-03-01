@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A28AC276-675F-4E43-8101-5E1499C53479}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameJoltServices</RootNamespace>
+    <AssemblyName>GameJoltServices</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PLATFORM_ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;PLATFORM_ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Windows\GameJoltServices\Debug\AuthenticationFailedException.cs">
+      <Link>AuthenticationFailedException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Helper.cs">
+      <Link>Helper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\LoggedInUser.cs">
+      <Link>LoggedInUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\News\NewsItem.cs">
+      <Link>NewsItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\News\NewsService.cs">
+      <Link>NewsService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Requests\LogInRequest.cs">
+      <Link>LogInRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Requests\ServiceRequestBase.cs">
+      <Link>ServiceRequestBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Saves\GameSave.cs">
+      <Link>GameSave.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Saves\GameSaveNotAvailableException.cs">
+      <Link>GameSaveNotAvailableException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Saves\GameSaveService.cs">
+      <Link>GameSaveService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\Saves\UploadSaveRequest.cs">
+      <Link>UploadSaveRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\ServiceBase.cs">
+      <Link>ServiceBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\ServicesManager.cs">
+      <Link>ServicesManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\User.cs">
+      <Link>User.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\UserAccountStatus.cs">
+      <Link>UserAccountStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\UserIndex.cs">
+      <Link>UserIndex.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJoltServices\UserType.cs">
+      <Link>UserType.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameJolt\GameJolt.csproj">
+      <Project>{899F14E2-9EFF-48FF-BF01-07D94C938319}</Project>
+      <Name>GameJolt %28Android\GameJolt%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>C:\BuildIncrementer.exe "$(ProjectDir)Properties\AssemblyInfo.cs" "$(ConfigurationName)"
+copy "$(TargetPath)" "C:\Users\Public\Documents\Visual Studio 2010\Assemblies\Android\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
