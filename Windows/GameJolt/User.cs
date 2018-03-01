@@ -69,6 +69,11 @@ namespace GameJolt
 			return BeginGetByUsername(gameId, privateKey, username, result => callback(EndGetByUsername(result)));
 		}
 
+		public static Task<User> GetByUsernameAsync(string gameId, string privateKey, string username)
+		{
+			return AsyncHelper.AsyncCall(action => { BeginGetByUsername(gameId, privateKey, username, action); }, EndGetByUsername);
+		}
+
 		public static IAsyncResult BeginGetByUserIds(string gameId, string privateKey, string[] userIds, AsyncCallback callback = null, object asyncState = null)
 		{
 			var request = UserRequestFactory.CreateGetRequest(gameId, privateKey, userIds);
@@ -93,6 +98,11 @@ namespace GameJolt
 			return BeginGetByUserIds(gameId, privateKey, userIds, result => callback(EndGetByUserIds(result)));
 		}
 
+		public static Task<User[]> GetByUserIdsAsync(string gameId, string privateKey, string[] userIds)
+		{
+			return AsyncHelper.AsyncCall(action => { BeginGetByUserIds(gameId, privateKey, userIds, action); }, EndGetByUserIds);
+		}
+
 		public static IAsyncResult BeginAuthenticateUser(string gameId, string privateKey, string username, string userToken, AsyncCallback callback = null, object asyncState = null)
 		{
 			var request = UserRequestFactory.CreateAuthRequest(gameId, privateKey, username, userToken);
@@ -115,6 +125,11 @@ namespace GameJolt
 		public static IAsyncResult AuthenticateUser(string gameId, string privateKey, string username, string userToken, Action<string> callback)
 		{
 			return BeginAuthenticateUser(gameId, privateKey, username, userToken, result => callback(EndAuthenticateUser(result)));
+		}
+
+		public static Task<string> AuthenticateUserAsync(string gameId, string privateKey, string username, string userToken)
+		{
+			return AsyncHelper.AsyncCall(action => { BeginAuthenticateUser(gameId, privateKey, username, userToken, action); }, EndAuthenticateUser);
 		}
 	}
 }

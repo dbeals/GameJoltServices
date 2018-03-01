@@ -30,5 +30,27 @@ namespace GameJolt.Async
 			var tempResult = (AsyncResult<TResult>) result;
 			return tempResult.EndInvoke();
 		}
+
+		public static Task<TResult> AsyncCall<TResult>(Action<AsyncCallback> begin, Func<IAsyncResult, TResult> end)
+		{
+			var taskCompletionSource = new TaskCompletionSource<TResult>();
+
+			begin(result => {
+				try
+				{
+					taskCompletionSource.TrySetResult(end(result));
+				}
+				catch (OperationCanceledException)
+				{
+					taskCompletionSource.TrySetCanceled();
+				}
+				catch (Exception e)
+				{
+					taskCompletionSource.TrySetException(e);
+				}
+			});
+
+			return taskCompletionSource.Task;
+		}
 	}
 }

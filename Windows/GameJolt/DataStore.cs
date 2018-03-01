@@ -69,6 +69,11 @@ namespace GameJolt
 			return BeginGetKeys(gameId, privateKey, username, userToken, type, result => callback(EndGetKeys(result)));
 		}
 
+		public static Task<string[]> GetKeysAsync(string gameId, string privateKey, string username, string userToken, DataStoreType type)
+		{
+			return AsyncHelper.AsyncCall(callback => BeginGetKeys(gameId, privateKey, username, userToken, type, callback), EndGetKeys);
+		}
+
 		public static IAsyncResult BeginGetByKey(string gameId, string privateKey, string username, string userToken, string key, AsyncCallback callback = null, object asyncState = null)
 		{
 			var request = DataStoreRequestFactory.CreateGetRequest(gameId, privateKey, username, userToken, key);
@@ -107,6 +112,11 @@ namespace GameJolt
 			return BeginGetByKey(gameId, privateKey, username, userToken, key, result => callback(EndGetByKey(result)));
 		}
 
+		public static Task<DataStore> GetByKeyAsync(string gameId, string privateKey, string username, string userToken, string key)
+		{
+			return AsyncHelper.AsyncCall(callback => BeginGetByKey(gameId, privateKey, username, userToken, key, callback), EndGetByKey);
+		}
+
 		public static IAsyncResult BeginSetByKey(string gameId, string privateKey, string username, string userToken, string key, string data, AsyncCallback callback = null, object asyncState = null)
 		{
 			var request = DataStoreRequestFactory.CreateSetRequest(gameId, privateKey, username, userToken, key, data);
@@ -129,6 +139,11 @@ namespace GameJolt
 		public static IAsyncResult SetByKey(string gameId, string privateKey, string username, string userToken, string key, string data, Action<string> callback)
 		{
 			return BeginSetByKey(gameId, privateKey, username, userToken, key, data, result => callback(EndSetByKey(result)));
+		}
+
+		public static Task<string> SetByKeyAsync(string gameId, string privateKey, string username, string userToken, string key, string data)
+		{
+			return AsyncHelper.AsyncCall(callback => BeginSetByKey(gameId, privateKey, username, userToken, key, data, callback), EndSetByKey);
 		}
 
 		public static IAsyncResult BeginUpdateByKey(string gameId, string privateKey, string username, string userToken, string key, DataStoreOperation operation, string value, AsyncCallback callback = null, object asyncState = null)
@@ -162,6 +177,11 @@ namespace GameJolt
 			return BeginUpdateByKey(gameId, privateKey, username, userToken, key, operation, value, result => callback(EndUpdateByKey(result)));
 		}
 
+		public static Task<DataStore> UpdateByKeyAsync(string gameId, string privateKey, string username, string userToken, string key, DataStoreOperation operation, string value)
+		{
+			return AsyncHelper.AsyncCall(callback => BeginUpdateByKey(gameId, privateKey, username, userToken, key, operation, value, callback), EndUpdateByKey);
+		}
+
 		public static IAsyncResult BeginRemoveByKey(string gameId, string privateKey, string username, string userToken, string key, AsyncCallback callback = null, object asyncState = null)
 		{
 			var request = DataStoreRequestFactory.CreateRemoveRequest(gameId, privateKey, username, userToken, key);
@@ -184,6 +204,11 @@ namespace GameJolt
 		public static IAsyncResult RemoveByKey(string gameId, string privateKey, string username, string userToken, string key, Action<string> callback)
 		{
 			return BeginRemoveByKey(gameId, privateKey, username, userToken, key, result => callback(EndRemoveByKey(result)));
+		}
+
+		public static Task<string> RemoveByKeyAsync(string gameId, string privateKey, string username, string userToken, string key)
+		{
+			return AsyncHelper.AsyncCall(callback => BeginRemoveByKey(gameId, privateKey, username, userToken, key, callback), EndRemoveByKey);
 		}
 
 		public static bool GameDataStoreExists(string gameId, string privateKey, string dataStoreKey)
