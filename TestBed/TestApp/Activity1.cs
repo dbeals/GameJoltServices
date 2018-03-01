@@ -1,35 +1,19 @@
-﻿using System;
-
+﻿using System.IO;
 using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using BealsSoftware.Core;
-using GameJolt;
+using Android.Widget;
 using GameJoltServices;
-using GameJoltServices.Saves;
 using GameJoltServices.News;
-using System.IO;
+using GameJoltServices.Saves;
 
 namespace TestApp
 {
 	[Activity(Label = "TestApp", MainLauncher = true, Icon = "@drawable/icon")]
 	public class Activity1 : Activity
 	{
+		#region Methods
 		protected override void OnCreate(Bundle bundle)
 		{
-			Logging.EntryLogged = (type, text) =>
-			{
-				if(type == "Information")
-					RuntimeLog.LogInformation(text, "GameJolt");
-				else if(type == "Warning")
-					RuntimeLog.LogWarning(text, "GameJolt");
-				else if(type == "Error")
-					RuntimeLog.LogError(text, "GameJolt");
-			};
-
 			base.OnCreate(bundle);
 
 			SetContentView(Resource.Layout.Main);
@@ -39,48 +23,46 @@ namespace TestApp
 
 			button.Click += delegate
 			{
-				string gameID = "GAMEID";
-				string privateKey = "PRIVATEKEY";
-				ServicesManager servicesManager = new ServicesManager(gameID, privateKey);
+				const string gameId = "GAMEID";
+				const string privateKey = "PRIVATEKEY";
+				var servicesManager = new ServicesManager(gameId, privateKey);
 
-				var username = "USERNAME";
-				var userToken = "USERTOKEN";
+				const string username = "USERNAME";
+				const string userToken = "USERTOKEN";
 				button.Enabled = false;
 
 				textView.Text = string.Empty;
 				var user = servicesManager.LogInUser(username, userToken);
-				if(user == null)
+				if (user == null)
 					textView.Text += ("Failed to authenticate " + username) + "\n";
 				else
 				{
-					//WriteUser(user);
-
-					NewsService newsService = new NewsService(servicesManager);
+					var newsService = new NewsService(servicesManager);
 					var newsItems = newsService.GetNews();
-					if(newsItems.Length == 0)
+					if (newsItems.Length == 0)
 						textView.Text += ("No news items.") + "\n";
 					else
 					{
 						textView.Text += ("News: ") + "\n";
-						foreach(var newsItem in newsItems)
+						foreach (var newsItem in newsItems)
 							textView.Text += (string.Format("{0} - {1}\n{2}\n", newsItem.DateTimePosted.ToShortDateString(), newsItem.Title, newsItem.Content)) + "\n";
 					}
 
-					var gameSaveService = new GameSaveService(GameJoltServices.Helper.GetDefaultCacheFolder("GJS Test Bed"), servicesManager);
+					var gameSaveService = new GameSaveService(Helper.GetDefaultCacheFolder("GJS Test Bed"), servicesManager);
 					var saves = gameSaveService.GetSaves(user);
-					if(saves.Length == 0)
+					if (saves.Length == 0)
 						textView.Text += ("No game saves.") + "\n";
 					else
 					{
-						foreach(var save in saves)
+						foreach (var save in saves)
 						{
-							if(!save.IsCached)
+							if (!save.IsCached)
 								gameSaveService.DownloadSave(save);
 
 							textView.Text += string.Format("{0} - {1} - {2}", save.Location, save.Name, save.DateSaved) + "\n";
-							using(var stream = save.GetDataStream())
+							using (var stream = save.GetDataStream())
 							{
-								using(var reader = new BinaryReader(stream))
+								using (var reader = new BinaryReader(stream))
 								{
 									textView.Text += (reader.ReadString()) + "\n";
 									textView.Text += (reader.ReadString()) + "\n";
@@ -93,6 +75,6 @@ namespace TestApp
 				}
 			};
 		}
+		#endregion
 	}
 }
-

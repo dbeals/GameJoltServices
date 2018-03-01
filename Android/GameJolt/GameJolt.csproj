@@ -59,6 +59,9 @@
     <Compile Include="..\..\Windows\GameJolt\Async\AsyncResultNoResult.cs">
       <Link>AsyncResultNoResult.cs</Link>
     </Compile>
+    <Compile Include="..\..\Windows\GameJolt\Constants.cs">
+      <Link>Constants.cs</Link>
+    </Compile>
     <Compile Include="..\..\Windows\GameJolt\DataStore.cs">
       <Link>DataStore.cs</Link>
     </Compile>
@@ -68,20 +71,17 @@
     <Compile Include="..\..\Windows\GameJolt\DataStoreType.cs">
       <Link>DataStoreType.cs</Link>
     </Compile>
-    <Compile Include="..\..\Windows\GameJolt\Helper.cs">
-      <Link>Helper.cs</Link>
-    </Compile>
     <Compile Include="..\..\Windows\GameJolt\HighScoreTable.cs">
       <Link>HighScoreTable.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Windows\GameJolt\LoggedInUser.cs">
-      <Link>LoggedInUser.cs</Link>
     </Compile>
     <Compile Include="..\..\Windows\GameJolt\Logging.cs">
       <Link>Logging.cs</Link>
     </Compile>
     <Compile Include="..\..\Windows\GameJolt\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows\GameJolt\RequestHelper.cs">
+      <Link>RequestHelper.cs</Link>
     </Compile>
     <Compile Include="..\..\Windows\GameJolt\Requests\DataStoreRequestFactory.cs">
       <Link>DataStoreRequestFactory.cs</Link>
@@ -143,17 +143,14 @@
     <Compile Include="..\..\Windows\GameJolt\User.cs">
       <Link>User.cs</Link>
     </Compile>
-    <Compile Include="..\..\Windows\GameJolt\UserIndex.cs">
-      <Link>UserIndex.cs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>C:\BuildIncrementer.exe "$(ProjectDir)Properties\AssemblyInfo.cs" "$(ConfigurationName)"
-copy "$(TargetPath)" "C:\Users\Public\Documents\Visual Studio 2010\Assemblies\Android\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

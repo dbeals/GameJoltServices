@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Windows\GameJoltServices\AddTrophyResult.cs">
+      <Link>AddTrophyResult.cs</Link>
+    </Compile>
     <Compile Include="..\..\Windows\GameJoltServices\Debug\AuthenticationFailedException.cs">
       <Link>AuthenticationFailedException.cs</Link>
     </Compile>
@@ -111,8 +114,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>C:\BuildIncrementer.exe "$(ProjectDir)Properties\AssemblyInfo.cs" "$(ConfigurationName)"
-copy "$(TargetPath)" "C:\Users\Public\Documents\Visual Studio 2010\Assemblies\Android\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
